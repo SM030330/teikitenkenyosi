@@ -18,5 +18,12 @@ module Teikitenkenyosi
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    config.time_zone = 'Tokyo'
+    config.generators.test_framework = :rspec
+    config.generators.system_tests   = false
+    config.generators.stylesheets    = false
+    config.generators.javascripts    = false
+    config.generators.helper         = false
   end
 end
