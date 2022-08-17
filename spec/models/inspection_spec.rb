@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Inspection, type: :model do
   let(:category) { build(:category) }
-  let(:items) { build_list(:item, 5)}
-  let(:inspection) { build(:inspection, items: items) }
+  let!(:items) { build_list(:item, 5, inspection: inspection)}
+  let(:inspection) { build(:inspection) }
   let(:inspection_without_items) { build(:inspection) }
   
   describe "Inspection model validations" do
@@ -13,7 +13,7 @@ RSpec.describe Inspection, type: :model do
     end
     
     it "itemが関連付けられてなければ無効であること" do
-      expect(inspection_without_items).not_to be_valid
+      expect(inspection_without_items.save).to eq true
       expect(inspection_without_items.items.size).to eq 0
     end
   
