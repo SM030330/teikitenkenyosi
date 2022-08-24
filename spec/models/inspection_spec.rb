@@ -1,9 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Inspection, type: :model do
-  let(:category) { build(:category) }
+  let!(:user) { create(:user) }
+  let(:category) { build(:category, user: user) }
   let!(:items) { build_list(:item, 5, inspection: inspection)}
-  let(:inspection) { build(:inspection) }
+  let(:inspection) { build(:inspection, user: user) }
   let(:inspection_without_items) { build(:inspection) }
   
   describe "Inspection model validations" do
@@ -26,6 +27,11 @@ RSpec.describe Inspection, type: :model do
 
     it "doingはデフォルトでfalseであること" do
       expect(inspection.doing).to eq false
+    end
+
+    it "userが関連付けられてなければ無効であること" do
+      inspection.user_id = nil
+      expect(inspection).not_to be_valid
     end
   end
 end

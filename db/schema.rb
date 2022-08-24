@@ -10,12 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_14_005205) do
+ActiveRecord::Schema.define(version: 2022_08_17_055851) do
 
   create_table "categories", charset: "utf8mb3", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_categories_on_user_id"
   end
 
   create_table "categories_to_inspections", charset: "utf8mb3", force: :cascade do |t|
@@ -33,12 +35,14 @@ ActiveRecord::Schema.define(version: 2022_08_14_005205) do
     t.boolean "doing", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_inspections_on_user_id"
   end
 
   create_table "items", charset: "utf8mb3", force: :cascade do |t|
     t.string "name", null: false
-    t.date "do_day"
-    t.date "notice_day"
+    t.date "do_day", null: false
+    t.date "notice_day", null: false
     t.boolean "doing", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -46,7 +50,23 @@ ActiveRecord::Schema.define(version: 2022_08_14_005205) do
     t.index ["inspection_id"], name: "index_items_on_inspection_id"
   end
 
+  create_table "users", charset: "utf8mb3", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.string "name", default: "ゲストユーザー", null: false
+    t.string "notice_email", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  add_foreign_key "categories", "users"
   add_foreign_key "categories_to_inspections", "categories"
   add_foreign_key "categories_to_inspections", "inspections"
+  add_foreign_key "inspections", "users"
   add_foreign_key "items", "inspections"
 end

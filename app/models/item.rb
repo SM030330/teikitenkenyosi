@@ -4,6 +4,7 @@ class Item < ApplicationRecord
   validates :name, presence: true
   validates :do_day, presence: true
   validates :notice_day, presence: true
+  validates :inspection_id, presence: true
   validate :do_day_is_today_or_before_today,
            :notice_day_is_after_do_day
 
