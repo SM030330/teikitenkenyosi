@@ -6,5 +6,4 @@ class Inspection < ApplicationRecord
   has_many   :categories, through: :categories_to_inspections
 
   validates :name, presence: true
-  validates :user_id, presernce: true
 end
