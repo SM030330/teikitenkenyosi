@@ -14,8 +14,7 @@ RSpec.describe Inspection, type: :model do
     end
     
     it "itemが関連付けられてなければ無効であること" do
-      expect(inspection_without_items.save).to eq true
-      expect(inspection_without_items.items.size).to eq 0
+      expect(inspection_without_items).not_to be_valid
     end
   
     it "categoryの関連付けが有効であること" do
