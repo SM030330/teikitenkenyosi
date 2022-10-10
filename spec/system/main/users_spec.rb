@@ -21,14 +21,18 @@ RSpec.describe "Main::Users", type: :system do
   describe "GET /main/user/sign_in" do
     let!(:user) { create(:user) }
 
-    scenario "sign_in処理が正しく行えること" do
+    scenario "sign_in, sign_out処理が正しく行えること" do
       visit new_main_user_session_path
   
       fill_in 'Email',    with: user.email
       fill_in 'Password', with: user.password
       click_button 'Log in'
-  
       expect(current_path).to eq root_path
+      expect(page).to have_content 'Log out'
+    
+      click_link 'Log out'
+      expect(current_path).to eq root_path
+      expect(page).to have_content 'Log in'
     end
   end
 end

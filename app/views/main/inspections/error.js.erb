@@ -1,0 +1,3 @@
+var element = document.querySelector("div.modal-body");
+
+element.insertAdjacentHTML("beforebegin", "<%= j render('shared/error_messages', resource: @inspection) %>");

@@ -1,0 +1,10 @@
+// modalのhide
+var myModal = document.getElementById("exampleModal");
+var myModalObj = bootstrap.Modal.getInstance(myModal)
+myModalObj.hide();
+
+// modalのinputリセット
+var formElement = document.querySelectorAll("#inspection-form");
+formElement.forEach((element) => {
+  element.reset();
+});

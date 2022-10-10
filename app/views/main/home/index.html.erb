@@ -11,8 +11,10 @@
           <a class="nav-link" href="#">all-notice</a>
           <a class="nav-link" href="#">my-page</a>
           <a class="nav-link" href="#">cofig</a>
+          <%= render 'main/home/create_inspection_modal' %>
         <% end %>
       </div>
+      
       <button type="button" class="btn btn-outline-secondary">
         <% if main_user_signed_in? %>
           <%= link_to "Log out", destroy_main_user_session_path, method: :delete %>
@@ -24,3 +26,7 @@
     
   </div>
 </nav>
+<div class="alert alert-primary" role="alert">
+  <%= flash[:notice] if flash[:notice].present? %>
+</div>
+
