@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_17_055851) do
+ActiveRecord::Schema.define(version: 2022_10_18_222740) do
 
   create_table "categories", charset: "utf8mb3", force: :cascade do |t|
     t.string "name", null: false
@@ -47,7 +47,9 @@ ActiveRecord::Schema.define(version: 2022_08_17_055851) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "inspection_id", null: false
+    t.bigint "user_id", null: false
     t.index ["inspection_id"], name: "index_items_on_inspection_id"
+    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "users", charset: "utf8mb3", force: :cascade do |t|
@@ -69,4 +71,5 @@ ActiveRecord::Schema.define(version: 2022_08_17_055851) do
   add_foreign_key "categories_to_inspections", "inspections"
   add_foreign_key "inspections", "users"
   add_foreign_key "items", "inspections"
+  add_foreign_key "items", "users"
 end

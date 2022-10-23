@@ -7,5 +7,8 @@ class Inspection < ApplicationRecord
 
   validates :name, presence: true
 
+  scope :users_all, ->(user) { where(id: user.id) }
+  scope :create_desc_of, ->(desc_num) { order(created_at: :desc_num) }
+
   accepts_nested_attributes_for :items, allow_destroy: true 
 end

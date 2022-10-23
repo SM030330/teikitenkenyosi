@@ -4,6 +4,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :categories
   has_many :inspections
+  has_many :items
 
   validates :name, presence: true
 

@@ -1,3 +1,6 @@
-var element = document.querySelector("div.modal-body");
+alert('保存に失敗しました')
+var errorElement = document.getElementById('error_explanation');
+errorElement?.remove();
 
-element.insertAdjacentHTML("beforebegin", "<%= j render('shared/error_messages', resource: @inspection) %>");
+var newElement = document.querySelector("div.modal-body");
+newElement.insertAdjacentHTML("beforebegin", "<%= j render('shared/error_messages', resource: @inspection) %>");
