@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
   belongs_to :inspection, optional: true
+  belongs_to :user, optional: true
 
   validates :name, presence: true
   validates :do_day, presence: true

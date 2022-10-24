@@ -19,6 +19,7 @@
             <%= inspection_form.text_area :comment, autofocus: true, class: "form-control" %>
           </div>
           <%= inspection_form.fields_for :items do |item_form| %>
+            <%= item_form.hidden_field :user_id, value: current_main_user.id %>
             <div class="field my-3">
               <%= item_form.label :item_name, class: "col-form-label" %><span> :</span>
               <%= item_form.text_field :name, autofocus: true, class: "form-control" %>
@@ -34,7 +35,7 @@
           <% end %>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <%= inspection_form.submit "create", data: { confirm: "保存してもよろしいですか？", disable_with: "保存中です" }, class: "btn btn-primary" %>
+            <%= inspection_form.submit "create", data: { confirm: "保存してもよろしいですか？", disable_with: "保存中" }, class: "btn btn-primary" %>
           </div>
         </div>
       <% end %>
