@@ -6,7 +6,8 @@ Rails.application.routes.draw do
     get 'index', to: 'home#index'
     resources :inspections, only: [:index, :create, :edit, :destroy]
 
-    devise_for :users, controllers: { registrations: "users/registrations",
-                                      sessions: "users/sessions"}
+    devise_for :users, controllers: { registrations: "main/users/registrations",
+                                      sessions: "main/users/sessions",
+                                      passwords: "main/users/passwords"}
   end  
 end
