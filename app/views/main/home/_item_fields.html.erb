@@ -1,0 +1,19 @@
+<div class="nested-fields pb-3 mb-2 border-bottom border-secondary">
+  <h6 class="my-3">Item</h6>
+  <%= f.hidden_field :user_id, value: current_main_user.id %>
+  <div class="field my-3">
+    <%= f.label :item_name, class: "col-form-label" %><span> :</span>
+    <%= f.text_field :name, autofocus: true, class: "form-control" %>
+  </div>                
+  <div class="field my-3">
+    <%= f.label :item_do_day, class: "col-form-label" %><span> :</span>  
+    <%= f.date_field :do_day, autofocus: true, class: "form-control" %>
+  </div>
+  <div class="field my-3">              
+    <%= f.label :item_notice_day, class: "col-form-label" %><span> :</span>              
+    <%= f.date_field :notice_day, autofocus: true, class: "form-control" %>
+  </div> 
+  <div class="d-flex justify-content-end mb-1">
+    <%= link_to_remove_association 'remove task', f , class: 'btn btn-outline-secondary btn-sm float-end'%>
+  </div>
+</div>

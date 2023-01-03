@@ -1,6 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <%= link_to "Logo", root_path, class: "navbar-brand" %>
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <%= image_tag 'toplogo.png', hight: '5' %>
+    <% end %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -15,13 +17,16 @@
         <% end %>
       </div>
       
-      <button type="button" class="btn btn-outline-secondary">
-        <% if main_user_signed_in? %>
-          <%= link_to "Log out", destroy_main_user_session_path, method: :delete %>
-        <% else %>
-          <%= link_to "Log in", new_main_user_session_path %>
-        <% end %>
-      </button>
+      <% if main_user_signed_in? %>
+        <div class="d-flex align-items-baseline">
+          <div class="me-2">
+            <span>ユーザー名　:</span><span class="ms-1"><%= current_main_user.name %></span>
+          </div>
+            <%= link_to t('sign_out'), destroy_main_user_session_path, method: :delete, class: 'btn btn-outline-secondary'%>
+      <% else %>
+            <%= link_to t('sign_in'), new_main_user_session_path,class: 'btn btn-outline-secondary'%>
+        </div>
+      <% end %>
     </div>
     
   </div>

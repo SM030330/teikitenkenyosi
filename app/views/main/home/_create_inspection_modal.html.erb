@@ -1,15 +1,16 @@
-<button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">+</button>
+<button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#NewInspectionModal" data-bs-whatever="@mdo">+</button>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="NewInspectionModal" tabindex="-1" aria-labelledby="NewInspectionModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">予定の新規作成</h5>
+        <h5 class="modal-title" id="NewInspectionModalLabel">予定の新規作成</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <%= form_with(model: @inspection, url: main_inspections_path, method: :post, local: false, id: 'inspection-form') do |inspection_form| %>
         <%= render "shared/error_messages", resource: @inspection %>
         <div class="modal-body">
+          <h6 class="my-3">Inspection</h5>
           <div class="field mb-3">
             <%= inspection_form.label :name, class: "col-form-label" %><span> :</span>
             <%= inspection_form.text_field :name, autofocus: true, class: "form-control" %>
@@ -18,21 +19,14 @@
             <%= inspection_form.label :comment, class: "col-form-label" %><span> :</span>            
             <%= inspection_form.text_area :comment, autofocus: true, class: "form-control" %>
           </div>
-          <%= inspection_form.fields_for :items do |item_form| %>
-            <%= item_form.hidden_field :user_id, value: current_main_user.id %>
-            <div class="field my-3">
-              <%= item_form.label :item_name, class: "col-form-label" %><span> :</span>
-              <%= item_form.text_field :name, autofocus: true, class: "form-control" %>
-            </div>                
-            <div class="field my-3">
-              <%= item_form.label :item_do_day, class: "col-form-label" %><span> :</span>  
-              <%= item_form.date_field :do_day, autofocus: true, class: "form-control" %>
+          <div id="items">
+            <%= inspection_form.fields_for :items do |item_form| %>          
+              <%= render "main/home/item_fields", f: item_form %>
+            <% end %>
+            <div class="d-flex justify-content-end">
+              <%= link_to_add_association 'add task', inspection_form, :items, partial: 'main/home/item_fields', class: 'btn btn-outline-primary btn-sm float-end'%>
             </div>
-            <div class="field my-3">              
-              <%= item_form.label :item_notice_day, class: "col-form-label" %><span> :</span>              
-              <%= item_form.date_field :notice_day, autofocus: true, class: "form-control" %>
-            </div>
-          <% end %>
+          </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             <%= inspection_form.submit "create", data: { confirm: "保存してもよろしいですか？", disable_with: "保存中" }, class: "btn btn-primary" %>

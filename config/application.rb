@@ -25,5 +25,8 @@ module Teikitenkenyosi
     config.generators.stylesheets    = false
     config.generators.javascripts    = false
     config.generators.helper         = false
+
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
+    config.i18n.default_locale = :ja
   end
 end
