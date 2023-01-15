@@ -1,24 +1,27 @@
 <div class="container">
   <h2 class="my-4">users_all_notice</h2>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">作業日</th>
-        <th scope="col">inspection</th>
-        <th scope="col">item</th>
-        <th scope="col">作業済み</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @items.each do |item| %>
+  <% unless @items.blank? %>
+    <table class="table">
+      <thead>
         <tr>
-          <th scope="row"><%= item.do_day %></th>
-          <td><%= item.inspection.name %></td>
-          <td><%= item.name %></td>
-          <td><%= item.doing %></td>
+          <th scope="col">作業日</th>
+          <th scope="col">inspection</th>
+          <th scope="col">item</th>
+          <th scope="col">作業済み</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <%= notice_exist(@items) %>
+      </thead>
+      <tbody>
+        <% @items.each do |item| %>
+          <tr>
+            <th scope="row"><%= item.do_day %></th>
+            <td><%= item.inspection.name %></td>
+            <td><%= item.name %></td>
+            <td><%= item.doing %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <h3 class="text-center mt-5"> 予定している通知はありません </h3>
+  <% end %>
 </div>
