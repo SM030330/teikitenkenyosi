@@ -3,10 +3,10 @@
     <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag 'toplogo.png', hight: '5' %>
     <% end %>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse show justify-content-between" id="navbarNavAltMarkup">    
+    <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">    
       <div class="navbar-nav">
         <% if main_user_signed_in? %>
           <%= link_to "Home", root_path, class: "nav-link active" %>
@@ -22,12 +22,11 @@
           <div class="me-2">
             <span>ユーザー名　:</span><span class="ms-1"><%= current_main_user.name %></span>
           </div>
-            <%= link_to t('sign_out'), destroy_main_user_session_path, method: :delete, class: 'btn btn-outline-secondary'%>
-      <% else %>
-            <%= link_to t('sign_in'), new_main_user_session_path,class: 'btn btn-outline-secondary'%>
+          <%= link_to t('sign_out'), destroy_main_user_session_path, method: :delete, class: 'btn btn-outline-secondary'%>
         </div>
+      <% else %>
+        <%= link_to t('sign_in'), new_main_user_session_path,class: 'btn btn-outline-secondary'%>
       <% end %>
     </div>
-    
   </div>
 </nav>
