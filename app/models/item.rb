@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   validates :notice_day, presence: true
   validate :do_day_is_today_or_before_today,
            :notice_day_is_after_do_day
-  
+ 
   def do_day_is_today_or_before_today
     if do_day.present? && do_day <= Date.current
       errors.add(:do_day, "登録日より前には設定できません")

@@ -1,0 +1,14 @@
+<h1><%= @user.name %>様 定期点検Checkerよりお知らせです。</h1>
+<p>近日中に予定している点検がございます。</p>
+<p>以下の内容をご確認ください</p>
+<br>
+<p>点検名: <%= @inspection.name %></p>
+<p>点検項目: <%= @item.name %></p>
+<p>点検予定日: <%= @item.do_day %></p>
+<% if @inspection.comment.present? %>
+  <p>備考:</p>
+  <p><%= @inspection.comment %></p>
+<% end %>
+<br>
+<p>このサイトにログインするには、<%= @url %>をクリックしてください。</p>
+ 

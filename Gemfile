@@ -38,6 +38,7 @@ gem "jquery-rails"
 gem 'devise-i18n'
 gem 'rails-i18n'
 gem 'dotenv-rails'
+gem 'whenever', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -55,6 +56,7 @@ group :development, :test do
   gem 'rubocop-rails', require: false
   gem 'rubocop-airbnb'
   gem 'capybara'
+  gem 'letter_opener_web'
 end
 
 group :development do
