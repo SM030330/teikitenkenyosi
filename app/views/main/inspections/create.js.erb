@@ -1,5 +1,5 @@
 // modalのhide
-var myModal = document.getElementById("exampleModal");
+var myModal = document.getElementById("NewInspectionModal");
 var myModalObj = bootstrap.Modal.getInstance(myModal)
 myModalObj.hide();
 
@@ -8,3 +8,7 @@ var formElement = document.querySelectorAll("#inspection-form");
 formElement.forEach((element) => {
   element.reset();
 });
+
+//　modalのerrorログのリセット
+var errorElement = document.getElementById('alert-box');
+errorElement?.remove();
