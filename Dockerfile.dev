@@ -26,6 +26,7 @@ RUN apt-get update                                                              
     yarn                                                                                                                                \
     zip                                                                                                                                 \
     cron                                                                                                                                \
+    vim                                                                                                                                 \
   && gem install foreman                                                                                                                \
   && apt-get clean
 
