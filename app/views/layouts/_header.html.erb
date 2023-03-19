@@ -9,7 +9,7 @@
     <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">    
       <div class="navbar-nav">
         <% if main_user_signed_in? %>
-          <%= link_to "Home", root_path, class: "nav-link active" %>
+          <%= link_to "Home", root_path, class: "nav-link" %>
           <%= link_to "all_notice", main_inspections_path, class: "nav-link" %>
           <a class="nav-link" href="#">my-page</a>
           <a class="nav-link" href="#">cofig</a>
@@ -20,12 +20,12 @@
       <% if main_user_signed_in? %>
         <div class="d-flex align-items-baseline">
           <div class="me-2">
-            <span>ユーザー名　:</span><span class="ms-1"><%= current_main_user.name %></span>
+            <span>ユーザー名  :</span><span class="ms-1"><%= current_main_user.name %></span>
           </div>
-          <%= link_to t('sign_out'), destroy_main_user_session_path, method: :delete, class: 'btn btn-outline-secondary'%>
+          <%= link_to "Sign out", destroy_main_user_session_path, method: :delete, class: 'btn btn-outline-secondary'%>
         </div>
       <% else %>
-        <%= link_to t('sign_in'), new_main_user_session_path,class: 'btn btn-outline-secondary'%>
+        <%= link_to "Sign in", new_main_user_session_path,class: 'btn btn-outline-secondary'%>
       <% end %>
     </div>
   </div>

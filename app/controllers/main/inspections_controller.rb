@@ -1,6 +1,6 @@
 class Main::InspectionsController < ApplicationController
   def index
-    @items = Item.where(user_id: current_main_user.id).order( do_day: :asc)
+    @items = Item.includes(:inspection).where(user_id: current_main_user.id).order( do_day: :asc)
   end
 
   def create
