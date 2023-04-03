@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   namespace :main do
     get '/', to: 'home#index'
     get 'index', to: 'home#index'
-    resources :inspections, only: [:index, :create, :edit, :destroy]
+    post 'item_change_doing', to: 'items#update_doing'
+    resources :inspections, only: [:index, :create]
+    resources :items, only: [:edit, :update]
 
     devise_for :users, controllers: { registrations: "main/users/registrations",
                                       sessions: "main/users/sessions",

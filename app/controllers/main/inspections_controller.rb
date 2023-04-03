@@ -1,6 +1,7 @@
 class Main::InspectionsController < ApplicationController
   def index
     @items = Item.includes(:inspection).where(user_id: current_main_user.id).order( do_day: :asc)
+    @form = Form::ItemCollection.new(items: @items)
   end
 
   def create
@@ -14,7 +15,6 @@ class Main::InspectionsController < ApplicationController
         format.js { render :error }
       end
     end
-
   end
 
   private
