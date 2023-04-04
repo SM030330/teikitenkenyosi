@@ -3,8 +3,6 @@ class Form::ItemCollection < Form::Base
 
   def initialize(attributes = {})
     super attributes
-    form_count = attributes.to_h.count
-    self.items = form_count.times.map { Item.new() } unless self.items.present?
   end
 
   def items_attributes=(attributes)
@@ -13,16 +11,9 @@ class Form::ItemCollection < Form::Base
     self.items_container = attributes
   end
 
-  # def build
-  #   items_map = items.map(&:name)
-                  
-  #   self.items
-  # end
-
-  def update
+  def update_doing
     self.items.each_with_index do |item, i|
       item.update!(self.items_container[i.to_s])
     end
-    true
   end
 end
