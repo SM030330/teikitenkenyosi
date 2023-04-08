@@ -1,0 +1,25 @@
+<div class="container">
+  <h2 class="my-4">アプリの設定情報</h2>
+    <table class="table">
+      <tbody>
+        <tr>              
+          <th scope="row">User name   :</th>
+          <td><%= current_main_user.name %></td>
+        </tr>
+        <tr>
+          <th scope="row">Email   :</th>
+          <td><%= current_main_user.email %></td>
+        </tr>
+        <tr>
+          <th scope="row">通知先email   :</th>
+          <td><%= current_main_user.notice_email %></td>
+        </tr>
+        <tr>
+          <th scope="row">Password   :</th>
+          <td>********</td>
+        </tr>
+      </tbody>
+    </table>
+    <%= link_to "設定内容を変更する", edit_main_user_registration_path, class: 'btn btn-outline-primary float-end ms-1'%>
+    <%= link_to "アカウントを削除する", main_user_registration_path, data: { confirm: "一度削除すると元のデータは復元できません。アカウントを削除してもよろしいですか?" }, method: :delete, class: 'btn btn-outline-danger float-end'%>
+</div>
