@@ -136,3 +136,40 @@ a {
 .btn-new-inspection{
   width: 2.2rem;
 }
+
+// home/index
+.simple-calendar {
+  tbody tr { 
+    height: 11rem;
+  }
+}
+
+.calendar_item{
+  font-size: 10px;
+  background-color: lightblue;
+}
+
+.calendar_item_sm{
+  font-size: 10px;
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .simple-calendar {
+    tbody tr { 
+      height: 5rem;
+    }
+  }
+
+  .calendar_item{
+    display: none;
+  }
+
+  .calendar_item_sm{
+    display: block;
+  }
+}
+
+.coming-soon {
+  border: 3px solid black;
+}
