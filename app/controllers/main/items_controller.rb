@@ -1,4 +1,6 @@
 class Main::ItemsController < ApplicationController  
+  before_action :authenticate_main_user!
+
   def update_doing
     @form = Form::ItemCollection.new(items_collection_params)
     if @form.update_doing

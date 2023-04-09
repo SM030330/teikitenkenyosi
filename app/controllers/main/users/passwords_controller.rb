@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Main::Users::PasswordsController < Devise::PasswordsController
+  before_action :authenticate_main_user!
+
   # GET /resource/password/new
   def new
     super

@@ -1,4 +1,6 @@
 class Main::InspectionsController < ApplicationController
+  before_action :authenticate_main_user!
+
   def index
     @items = Item.includes(:inspection).where(user_id: current_main_user.id).order( do_day: :asc)
     @form = Form::ItemCollection.new(items: @items)

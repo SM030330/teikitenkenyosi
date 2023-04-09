@@ -14,7 +14,7 @@
         <% end %><br />
         <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
       </div>
-      <%= f.submit t('sign_in'), class: "btn btn-lg btn-primary btn-block btn-new mt-2"%>
+      <%= f.submit t('sign_in'), class: "btn btn-outline-primary btn-block btn-new mt-2"%>
       <div class="mt-2">
         <% if devise_mapping.rememberable? %>
           <div id="remember" class="field checkbox">
