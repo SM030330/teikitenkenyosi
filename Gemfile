@@ -39,6 +39,7 @@ gem 'devise-i18n'
 gem 'rails-i18n'
 gem 'dotenv-rails'
 gem 'whenever', require: false
+gem 'simple_calendar', "~> 2.0"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

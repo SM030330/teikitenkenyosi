@@ -8,7 +8,6 @@ class Main::InspectionsController < ApplicationController
 
   def create
     @inspection = current_main_user.inspections.build(strong_param_create_inspection)
-    
     respond_to do |format|
       if @inspection.valid?
         @inspection.save

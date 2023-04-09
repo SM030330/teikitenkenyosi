@@ -1,0 +1,43 @@
+<div class="container">
+  <% if main_user_signed_in? %>
+    <div>
+      <h2>直近の予定</h2>
+      <% if @coming_items.present? %>
+        <table class="table coming-soon mb-3">
+          <thead>
+            <tr>
+              <th scope="col">作業日</th>
+              <th scope="col">点検対象</th>
+              <th scope="col">項目</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @coming_items.first(5).each.each do |item| %>
+              <tr>
+                <th scope="row"><%= item.do_day %></th>
+                <td><%= item.inspection.name %></td>
+                <td><%= item.name %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <h3 class="text-center mt-5"> 直近の予定はありません </h3>
+      <% end %>
+    </div>
+    <%= month_calendar(attribute: :do_day, events: @user_items) do |date, user_items| %>
+      <div class="calendar-items">
+        <%= date.day %>
+        <% user_items.each do |user_item| %>
+          <div class="mb-1 calendar_item">
+            <label>点検名：</label><span><%= user_item.inspection.name %></span><br>
+            <label>項目：</label><sapn><%= user_item.name %></sapn>
+          </div>
+        <% end %>
+        <div class="calendar_item_sm">
+          <p><%= "#{user_items.size}件" if user_items.present? %></p>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
