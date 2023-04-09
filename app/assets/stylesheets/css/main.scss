@@ -170,6 +170,14 @@ a {
   }
 }
 
+@media (max-width: 500px) {
+  .coming-soon {
+    font-size: 0.2rem; 
+  }
+  .simple-calendar table{
+    font-size: 0.2rem;
+  }
+}
 .coming-soon {
   border: 3px solid black;
 }
