@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     get '/', to: 'home#index'
     get 'index', to: 'home#index'
     post 'item_change_doing', to: 'items#update_doing'
-    resources :inspections, only: [:index, :create]
+    resources :inspections, only: [:index, :create, :show, :edit, :update, :delete]
     resources :items, only: [:edit, :update]
 
     devise_for :users, controllers: { registrations: "main/users/registrations",

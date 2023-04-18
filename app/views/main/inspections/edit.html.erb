@@ -1,0 +1,37 @@
+<div class="container">
+  <h2 class="text-center mt-2">点検項目の編集</h2>
+  <div class="card card-container">
+    <%= form_for([:main, @inspection], method: :patch ) do |f| %>
+      <%= render "shared/error_messages", resource: @inspection %>
+      <div class="field mb-2">
+        <label>点検名：</label><br />
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
+      </div>
+      <div class="field mb-2 ">
+        <laveL>備考：</laveL><br />
+        <%= f.text_field :comment, autofocus: true, class: "form-control" %>
+      </div>
+      <%= f.fields_for :items, @inspection.items do |item_form| %>
+        <div class="nested-fields pb-3 mt-4 border-top border-secondary">
+          <%= item_form.hidden_field :user_id, value: current_main_user.id %>
+          <div class="field my-3">
+            <%= item_form.label "項目名", class: "col-form-label" %><span> :</span>
+            <%= item_form.text_field :name, autofocus: true, class: "form-control" %>
+          </div>                
+          <div class="field my-3">
+            <%= item_form.label "実施日", class: "col-form-label" %><span> :</span>  
+            <%= item_form.date_field :do_day, autofocus: true, class: "form-control" %>
+          </div>
+          <div class="field my-3">              
+            <%= item_form.label "通知日", class: "col-form-label" %><span> :</span>              
+            <%= item_form.date_field :notice_day, autofocus: true, class: "form-control" %>
+          </div> 
+        </div>     
+      <% end %>
+      
+      <%= f.submit "変更を完了する", class: "btn btn-outline-primary btn-block btn-new mt-2" %>
+    <% end %>
+
+    <%= link_to "戻る", :back, class: 'mt-2' %>
+  </div>
+</div>

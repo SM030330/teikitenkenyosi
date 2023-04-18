@@ -1,0 +1,32 @@
+<div class="container">
+  <h2 class="my-4">アプリの設定情報</h2>
+  <div class="card">
+    <div class="card-header">
+      <label >点検名：</label><span><%= @inspection.name %></span>
+    </div>
+    <div class="card-body">
+      <h6 class="card-title">備考</h6>
+      <p class="card-text"><%= @inspection.comment %></p>
+    </div>
+  </div>
+  <% @inspection.items.each do |item| %>
+    <h6>項目名：<%= item.name %></h6>
+    <table class="table mt-2">
+      <tbody>
+          <dev class="show-items">
+            <tr>
+              <th scope="row">実施日   :</th>
+              <td><%= item.do_day %></td>
+            </tr>
+            <tr>
+              <th scope="row">通知日   :</th>
+              <td><%= item.notice_day %></td>
+            </tr>
+            <tr>
+          </dev>
+       </tbody>
+    </table>
+  <% end %>
+  <%= link_to "設定内容を変更する", edit_main_inspection_path, class: 'btn btn-outline-primary float-end ms-1 mt-1'%>
+  <%= link_to "点検を削除する", main_inspection_path, data: { confirm: "一度削除すると元のデータは復元できません。点検を削除してもよろしいですか?" }, method: :delete, class: 'btn btn-outline-danger float-end mt-1'%>
+</div>
