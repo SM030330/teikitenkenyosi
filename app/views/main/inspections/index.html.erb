@@ -1,35 +1,39 @@
 <%= form_for(@form, url: main_item_change_doing_url, method: :post) do |form_items| %>
-<div class="container">
-  <h2 class="my-4">予定通知一覧</h2>
-  <% unless @items.blank? %>
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">作業日</th>
-          <th scope="col">点検対象</th>
-          <th scope="col">項目</th>
-          <th scope="col">作業済み</th>
-        </tr>
-      </thead>
-      <tbody>
-        <%= form_items.fields_for :items do |item_f| %>
-          <tr>              
-            <th scope="row"><%= @items[item_f.index].do_day %></th>
-            <td><%= @items[item_f.index].inspection.name %></td>
-            <td><%= @items[item_f.index].name %></td>
-            <td>
-              <div class="form-check">
-                <%= item_f.check_box :doing, class: "form-check-input", id: "formCheckDefault", value: @items[item_f.index].doing %>
-                <label class="form-check-label" for="formCheckDefault"><%= @items[item_f.index].doing %></label>
-              </div>
-            </td>
+  <div class="container">
+    <h2 class="my-4">予定通知一覧</h2>
+    <% unless @items.blank? %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">作業日</th>
+            <th scope="col">点検対象</th>
+            <th scope="col">項目</th>
+            <th scope="col">作業済み</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <%= form_items.submit "作業状態を変更する" , class: 'btn btn-outline-primary float-end'%>
-  <% else %>
-    <h3 class="text-center mt-5"> 予定している通知はありません </h3>
-  <% end %>
-</div>
+        </thead>
+        <tbody>
+          <%= form_items.fields_for :items do |item_f| %>
+            <tr>
+              <th scope="row"><%= @items[item_f.index].do_day %></th>
+              <td>
+                <%= link_to main_inspection_path(@items[item_f.index].inspection.id) do %>
+                  <%= @items[item_f.index].inspection.name %>
+                <% end %>
+              </td>
+              <td><%= @items[item_f.index].name %></td>
+              <td>
+                <div class="form-check">
+                  <%= item_f.check_box :doing, class: "form-check-input", id: "formCheckDefault", value: @items[item_f.index].doing %>
+                  <label class="form-check-label" for="formCheckDefault"><%= @items[item_f.index].doing %></label>
+                </div>
+              </td>      
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= form_items.submit "作業状態を変更する" , class: 'btn btn-outline-primary float-end'%>
+    <% else %>
+      <h3 class="text-center mt-5"> 予定している通知はありません </h3>
+    <% end %>
+  </div>
 <% end %>

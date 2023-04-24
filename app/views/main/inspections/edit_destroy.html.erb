@@ -1,0 +1,25 @@
+<div class="container">
+  <h2 class="text-center mt-2">点検項目の削除</h2>
+  <div class="card card-container">
+    <%= form_for([:main, @inspection], method: :delete ) do |f| %>
+      <%= render "shared/error_messages", resource: @inspection %>
+      <div class="field pb-3 border-bottom border-secondary">
+        <%= f.hidden_field :id, value: @inspection.id %>
+        <%= f.label :name, "点検名： #{@inspection.name}" %>
+        <%= f.check_box :is_delete, class: "form-check-input float-end", id: "formCheckDefault" %>
+      </div>
+      <%= f.fields_for :items, @inspection.items do |item_form| %>
+        <div class="nested-fields mt-4">
+          <%= item_form.hidden_field :id, value: @inspection.items[item_form.index].id %>
+          <div class="field my-3">
+            <%= item_form.label :name, "項目名： #{@inspection.items[item_form.index].name}" %>
+            <%= item_form.check_box :is_delete, class: "form-check-input float-end", id: "formCheckDefault" %>
+          </div>                
+        </div>     
+      <% end %>
+      
+      <%= f.submit "選択した項目を削除する", class: "btn btn-outline-danger btn-block btn-new mt-2" %>
+    <% end %>
+    <%= link_to "戻る", :back, class: 'mt-2' %>
+  </div>
+</div>

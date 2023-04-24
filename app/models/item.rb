@@ -5,7 +5,7 @@ class Item < ApplicationRecord
   validates :name, presence: true
   validates :do_day, presence: true
   validates :notice_day, presence: true
-  validate :do_day_is_today_or_before_today, on: :create
+  validate :do_day_is_today_or_before_today, on: :create 
   validate :notice_day_is_after_do_day
  
   def do_day_is_today_or_before_today
