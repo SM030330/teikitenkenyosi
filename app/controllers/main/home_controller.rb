@@ -5,4 +5,7 @@ class Main::HomeController < ApplicationController
       @user_items = current_main_user.items.includes(:inspection)
     end
   end
+
+  def confirm
+  end
 end
