@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
+  <div class="container">
     <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag 'toplogo.png', hight: '5' %>
     <% end %>
@@ -10,13 +10,11 @@
       <div class="navbar-nav">
         <% if main_user_signed_in? %>
           <%= link_to "Home", root_path, class: "nav-link" %>
-          <%= link_to "all_notice", main_inspections_path, class: "nav-link" %>
-          <%= link_to "my-page", main_users_user_path(id: current_main_user.id), class: "nav-link" %>
-          <a class="nav-link" href="#">cofig</a>
+          <%= link_to "all notice", main_inspections_path, class: "nav-link" %>
+          <%= link_to "my config", main_users_user_path(id: current_main_user.id), class: "nav-link" %>
           <%= render 'main/home/create_inspection_modal' %>
         <% end %>
       </div>
-      
       <% if main_user_signed_in? %>
         <div class="d-flex align-items-baseline">
           <div class="me-2">
