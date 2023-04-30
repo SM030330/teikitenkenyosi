@@ -11,7 +11,6 @@ class Main::Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    flash.now[:notice] = "ようこそ点検Checkerへ!"
     super
   end
 

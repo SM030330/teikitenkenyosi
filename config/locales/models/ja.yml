@@ -1,0 +1,19 @@
+# 参考　https://qiita.com/mmaumtjgj/items/93ab3ef8cbcf9591fc30
+
+ja:
+  activerecord:
+    models:
+      user: 'ユーザー'
+      inspection: '点検'
+      item: '項目'
+    attributes:
+      user:
+        email: 'メールアドレス'
+        password: 'パスワード'
+        password_confirmation: 'パスワードの確認'
+      inspections:
+        name: '点検名'
+      items:
+        name: '項目名'
+        do_day: '点検実施日'
+        notice_day: '通知日'

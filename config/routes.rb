@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     get 'index', to: 'home#index'
     post 'item_change_doing', to: 'items#update_doing'
     get 'inspection/edit_destroy/:id', to: 'inspections#edit_destroy', as: :inspection_edit_destroy
+    get 'home/confirm', to: 'home#confirm', ad: :home_confirm
     resources :inspections, only: [:index, :create, :show, :edit, :update, :destroy]
     resources :items, only: [:edit, :update]
 
