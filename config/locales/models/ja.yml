@@ -11,9 +11,11 @@ ja:
         email: 'メールアドレス'
         password: 'パスワード'
         password_confirmation: 'パスワードの確認'
-      inspections:
+      inspection:
         name: '点検名'
+        comment: '備考'
       items:
         name: '項目名'
         do_day: '点検実施日'
         notice_day: '通知日'
+        
