@@ -3,4 +3,4 @@ var errorElement = document.getElementById('alert-box');
 errorElement?.remove();
 
 var newElement = document.querySelector("div.modal-body");
-newElement.insertAdjacentHTML("beforebegin", "<%= j render('shared/error_messages', resource: @inspection) %>");
+newElement.insertAdjacentHTML("beforebegin", "<%= j render('shared/error_messages', resource: @new_inspection) %>");

@@ -9,7 +9,7 @@
       </div>
       <div class="field mb-2 ">
         <laveL>備考：</laveL><br />
-        <%= f.text_field :comment, autofocus: true, class: "form-control" %>
+        <%= f.text_area :comment, autofocus: true, class: "form-control" %>
       </div>
       <%= f.fields_for :items, @inspection.items do |item_form| %>
         <div class="nested-fields pb-3 mt-4 border-top border-secondary">

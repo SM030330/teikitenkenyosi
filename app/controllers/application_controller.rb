@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   private
   def inspection_precreate
-    @inspection = current_main_user.inspections.build
-    @inspection.items.build
+    @new_inspection = current_main_user.inspections.build
+    @new_inspection.items.build
   end
 end

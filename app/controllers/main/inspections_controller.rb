@@ -8,10 +8,10 @@ class Main::InspectionsController < ApplicationController
   end
 
   def create
-    @inspection = current_main_user.inspections.build(strong_param_create_inspection)
+    @new_inspection = current_main_user.inspections.build(strong_param_create_inspection)
     respond_to do |format|
-      if @inspection.valid?
-        @inspection.save
+      if @new_inspection.valid?
+        @new_inspection.save
         format.js
       else
         format.js { render :error }
