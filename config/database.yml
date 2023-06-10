@@ -15,7 +15,7 @@ default: &default
   pool: 5
   host: <%= ENV['MYSQL_HOST'] || 'localhost' %>
   username: <%= ENV['MYSQL_USERNAME'] || 'root' %>
-  password: <%= ENV['MYSQL_PASSWORD'] || '' %>
+  password: <%= ENV['MYSQL_PASSWORD'] || 'password' %>
 
 development:
   <<: *default
@@ -46,7 +46,12 @@ test:
 #
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
-#
+
 production:
   <<: *default
-  database: teikitenkenyosi_product
+  adapter: mysql8
+  database: tenkenchecker-db
+  username: ENV['MYSQL_AWS_USERNAME']
+  password: ENV['MYSQL_AWS_PASSWORD']
+  host: ENV['MYSQL_AWS_HOST']
+  encoding: utf8

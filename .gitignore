@@ -201,3 +201,13 @@ crashlytics-build.properties
 fabric.properties
 
 /storage/*
+
+# 環境変数
+.env
+
+#access_keys
+.tenkenchecker_accessKeys.csv
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
