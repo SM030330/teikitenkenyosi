@@ -18,7 +18,7 @@ services:
   rails:
     build:
       context: .
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile.deploy
     env_file:
       - .env
     volumes:
