@@ -23,6 +23,7 @@ services:
     ports:
       - '3001:3000'
     environment:
+      
       MYSQL_USERNAME: root
       MYSQL_PASSWORD: password
       MYSQL_HOST: mysql
