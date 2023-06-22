@@ -28,7 +28,7 @@ RUN apt-get update                                                              
   && gem install foreman                                                                                                                \
   && apt-get clean
 
-RUN mkdir /teikitenkenyosi
 WORKDIR /teikitenkenyosi
 COPY . /teikitenkenyosi
 RUN bundle install
+RUN mkdir -p tmp/sockets

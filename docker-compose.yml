@@ -41,4 +41,5 @@ services:
       - storage:/teikitenkenyosi/storage
     tty: true
     stdin_open: true
-    command: bundle exec rails server -b 0.0.0.0
+    # sochet通信時は-bオプションを消す
+    command: bundle exec rails server

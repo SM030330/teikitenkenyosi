@@ -49,6 +49,7 @@ test:
 
 production:
   <<: *default
+  # database: teikitenkenyosi_production
   adapter: mysql8
   database: tenkenchecker-db
   username: ENV['MYSQL_AWS_USERNAME']
