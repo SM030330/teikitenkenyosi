@@ -1,9 +1,4 @@
 version: "3"
-volumes:
-  vendor_bundle:
-  node_modules:
-  public-data:
-  tmp-data:
 
 services:
   nginx:
@@ -42,6 +37,19 @@ services:
       bundle exec rails db:create -e production
       bundle exec rails db:migrate
       bundle exec puma -C config/puma.rb -e production      
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:8.0
+    environment:
+      - .env
+    networks:
+      - default
+    ports:
+      - '33406:3306'
+    volumes:
+      - mysql_data:/var/lib/mysql
 
 volumes:
   storage:
