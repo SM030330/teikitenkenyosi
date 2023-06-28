@@ -49,10 +49,10 @@ test:
 
 production:
   <<: *default
-  # database: teikitenkenyosi_production
-  adapter: mysql8
+  database: teikitenkenyosi_production
+  adapter: mysql2
   database: tenkenchecker-db
-  username: ENV['MYSQL_AWS_USERNAME']
-  password: ENV['MYSQL_AWS_PASSWORD']
-  host: ENV['MYSQL_AWS_HOST']
+  username: <%= ENV['MYSQL_AWS_USER'] %>
+  password: <%= ENV['MYSQL_AWS_PASSWORD'] %>
+  host: <%= ENV['MYSQL_AWS_HOST'] %>
   encoding: utf8

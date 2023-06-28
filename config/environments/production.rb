@@ -14,8 +14,8 @@ Rails.application.configure do
 
   # Full error reports are disabled and caching is turned on.
   # test稼働のためtrueに変更
-  config.consider_all_requests_local       = false
-  # config.consider_all_requests_local       = true
+  # config.consider_all_requests_local       = false
+  config.consider_all_requests_local       = true
   config.action_controller.perform_caching = true
 
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
@@ -31,8 +31,8 @@ Rails.application.configure do
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   # test稼働のためtrueに変更
-  config.assets.compile = false
-  # config.assets.compile = true
+  # config.assets.compile = false
+  config.assets.compile = true
   
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.asset_host = 'http://assets.example.com'
@@ -121,4 +121,17 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.gmail.com',
+    port:                 587,
+    domain:               'smtp.gmail.com',
+    user_name:            ENV['SMTP_GMAIL_ADDRESS'],
+    password:             ENV['SMTP_PASSWORD'],
+    authentication:       'login',
+    enable_starttls_auto: true,
+    open_timeout:         5,
+    read_timeout:         5 }  
 end

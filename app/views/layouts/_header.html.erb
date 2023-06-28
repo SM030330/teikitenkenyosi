@@ -20,7 +20,7 @@
           <div class="me-2">
             <span>ユーザー名  :</span><span class="ms-1"><%= current_main_user.name %></span>
           </div>
-          <%= link_to "Sign out", destroy_main_user_session_path, method: :delete, class: 'btn btn-outline-secondary'%>
+          <%= button_to "Sign out", destroy_main_user_session_path, method: :delete, class: 'btn btn-outline-secondary'%>
         </div>
       <% else %>
         <%= link_to "Sign in", new_main_user_session_path,class: 'btn btn-outline-secondary'%>
