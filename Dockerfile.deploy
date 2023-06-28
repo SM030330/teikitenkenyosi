@@ -14,7 +14,7 @@ RUN apt-get update                                                              
     libmariadbclient18                                                                                                                  \
     libmariadbclient-dev-compat                                                                                                         \
     libmariadbclient-dev                                                                                                                \
-  && apt-get install -y --allow-unauthenticated                                                                                         \
+  && apt-get install -y --allow-unauthenticated                                                                                     \
     libmysqlclient-dev                                                                                                                  \
     mysql-client                                                                                                                        \
     libxml2-dev                                                                                                                         \
@@ -30,5 +30,6 @@ RUN apt-get update                                                              
 
 WORKDIR /teikitenkenyosi
 COPY . /teikitenkenyosi
-RUN bundle install
+RUN bundle config set --local path 'vendor/bundle'
+RUN bundle install --without test development
 RUN mkdir -p tmp/sockets

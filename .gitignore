@@ -212,6 +212,7 @@ fabric.properties
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
 
+/public/assets
 /public/packs
 /public/packs-test
 /node_modules

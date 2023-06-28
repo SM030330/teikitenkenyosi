@@ -8,6 +8,7 @@
     "@rails/webpacker": "5.4.3",
     "cocoon": "github:nathanvda/cocoon#c24ba53",
     "jquery": "^3.6.1",
+    "vue-loader": "15.9.2",
     "webpack": "^4.46.0",
     "webpack-cli": "^3.3.12"
   },
