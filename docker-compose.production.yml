@@ -15,9 +15,10 @@ services:
       - app
 
   app:
-    build:
-      context: .
-      dockerfile: Dockerfile.deploy
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile.deploy
+    image: sm030330/tenkenchecker-app:latest
     env_file:
       - .env
     volumes:
@@ -36,7 +37,7 @@ services:
 
   mysql:
     image: mysql:8.0
-    environment:
+    env_file:
       - .env
     networks:
       - default
