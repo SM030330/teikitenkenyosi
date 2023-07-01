@@ -31,8 +31,8 @@ Rails.application.configure do
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   # test稼働のためtrueに変更
-  # config.assets.compile = false
   config.assets.compile = true
+  # config.assets.compile = true
   
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.asset_host = 'http://assets.example.com'
@@ -124,14 +124,38 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
 
-  config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
-    port:                 587,
-    domain:               'smtp.gmail.com',
-    user_name:            ENV['SMTP_GMAIL_ADDRESS'],
-    password:             ENV['SMTP_PASSWORD'],
-    authentication:       'login',
-    enable_starttls_auto: true,
-    open_timeout:         5,
-    read_timeout:         5 }  
+  # config.action_mailer.smtp_settings = {
+  #   address:              'smtp.gmail.com',
+  #   port:                 587,
+  #   domain:               'smtp.gmail.com',
+  #   user_name:            ENV['SMTP_GMAIL_ADDRESS'],
+  #   password:             ENV['SMTP_PASSWORD'],
+  #   authentication:       'login',
+  #   enable_starttls_auto: true,
+  #   open_timeout:         5,
+  #   read_timeout:         5 }  
+  config.action_mailer.perform_caching = true
+  config.action_mailer.raise_delivery_errors = true
+
+  # host = 'smtp.gamil.com'
+  # config.action_mailer.default_url_options = { host: host }
+  ActionMailer::Base.smtp_settings = {
+    address: 'smtp.gmail.com',
+    domain: 'gmail.com',
+    port: 587,
+    user_name: 'tenkenchecker@gmail.com',
+    password: 'wfakayjhplujfqoq',
+    authentication: 'plain',
+    enable_starttls_auto: true
+  }
+
+  # ActionMailer::Base.smtp_settings = {
+  #   :port           => 587,
+  #   :address        => 'smtp.gmail.com',
+  #   :user_name      => ENV['SMTP_GMAIL_ADDRESS'],
+  #   :password       => ENV['SMTP_PASSWORD'],
+  #   :domain         => host,
+  #   :authentication => :plain,
+  #   :enable_starttls_auto => :true
+  # }
 end
