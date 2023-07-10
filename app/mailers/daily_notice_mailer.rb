@@ -1,6 +1,6 @@
 class DailyNoticeMailer < ApplicationMailer
   def notice_emails
-    @url = 'http://teikitenkenchecker.com/login'
+    @root_url = ENV['SMTP_HOST']
     @user = params[:user]
     @inspection = params[:inspection]
     @item = params[:item]

@@ -5,6 +5,7 @@ class DeviseMyMailer < Devise::Mailer
   # https://thinkami.hatenablog.com/entry/2021/06/15/233217
 
   def headers_for(action, opts)
+    @root_url = ENV['SMTP_HOST']
     super.merge!(template_path: 'main/users/mailer')
   end
 end

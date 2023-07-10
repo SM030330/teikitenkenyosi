@@ -45,6 +45,7 @@ services:
       - '33406:3306'
     volumes:
       - mysql_data:/var/lib/mysql
+      
 volumes:
   storage:
   mysql_data:
