@@ -32,3 +32,6 @@ set :output, "#{Rails.root}/log/cron.log"
 every 1.days, at: '0:00 am' do
   runner "Batch::LoodItemsToEmails.run"
 end
+
+# コマンド'service cron start'でcroneを起動
+# コマンド'bundle exec whenever --update-crontab 'で設定を反映
