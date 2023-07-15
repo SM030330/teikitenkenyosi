@@ -111,12 +111,6 @@ a {
   transition: all 0.218s;
 }
 
-// .btn-new:hover,
-// .btn-new:active,
-// .btn-new:focus {
-//   background-color: rgb(12, 97, 33);
-// }
-
 .forgot-password {
   color: rgb(104, 145, 162);
 }
@@ -125,34 +119,6 @@ a {
 .forgot-password:active,
 .forgot-password:focus{
   color: rgb(12, 97, 33);
-}
-
-// nav new-inspection
-@media (min-width: 992px) {
-  .navbar-nav {
-    align-items: center;
-  }
-  .fade-key-mini{
-    display: none !important;
-  }
-  .display-oncolapse {
-    display: none !important;
-  }
-  .display-noncolapse {
-    display: flex !important;
-  }
-}
-
-@media (max-width: 991px) {
-  .navbar-nav {
-    align-items: baseline;
-  }
-  .fade-key-lage {
-    display: none !important;
-  }
-  .display-noncolapse {
-    display: none !important;
-  }
 }
 
 .btn-new-inspection{
@@ -176,30 +142,10 @@ a {
   display: none;
 }
 
-@media (max-width: 900px) {
-  .simple-calendar {
-    tbody tr { 
-      height: 5rem;
-    }
-  }
-
-  .calendar_item{
-    display: none;
-  }
-
-  .calendar_item_sm{
-    display: block;
-  }
+.navbar-brand {
+  height: 4rem;
 }
 
-@media (max-width: 500px) {
-  .coming-soon {
-    font-size: 0.2rem; 
-  }
-  .simple-calendar table{
-    font-size: 0.2rem;
-  }
-}
 .coming-soon {
   border: 3px solid black;
 }
@@ -225,4 +171,51 @@ img.new_check_ditails {
 
 .nav-link {
   color: rgba(0,0,0,.55) !important;
+}
+
+@media (min-width: 992px) {
+  .navbar-nav {
+    align-items: center;
+  }
+  .fade-key-mini{
+    display: none !important;
+  }
+  .display-oncolapse {
+    display: none !important;
+  }
+  .display-noncolapse {
+    display: flex !important;
+  }
+}
+
+@media (max-width: 991px) {
+  .navbar-nav {
+    align-items: baseline;
+  }
+  .fade-key-lage {
+    display: none !important;
+  }
+  .display-noncolapse {
+    display: none !important;
+  }
+  .simple-calendar {
+    tbody tr { 
+      height: 5rem;
+    }
+  }
+  .calendar_item{
+    display: none;
+  }
+  .calendar_item_sm{
+    display: block;
+  }
+  .navbar-brand {
+    height: 2.5rem;
+  }
+}
+
+@media (max-width: 500px) {
+  table {
+    font-size: 0.8rem;
+  }
 }
