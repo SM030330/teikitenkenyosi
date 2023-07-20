@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
-    <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag 'toplogo.png', hight: '5' %>
+    <%= link_to root_path do %>
+      <%= image_tag 'toplogo.png', class: 'navbar-brand' %>
     <% end %>
     <% if main_user_signed_in? %>
       <%= render 'main/home/create_inspection_modal' %>
@@ -15,13 +15,12 @@
           <%= link_to "my config", main_users_user_path(id: current_main_user.id), class: "nav-link" %>
           <div class="mx-2 ms-3 d-flex">
             <span class="mt-2">ユーザー名  : <%= current_main_user.name %></span>
-            <%= button_to "Sign out", destroy_main_user_session_path, method: :delete, class: 'btn btn-outline-secondary ms-2'%>
+            <%= button_to "Sign out", destroy_main_user_session_path, method: :delete, class: 'btn btn-outline-secondary ms-2', id: 'sign_out'%>
           </div>
           <div class="ms-1">
           </div>
         </div>
-      </div>
-        
+      </div>        
       <div class="display-noncolapse w-100 justify-content-between">
         <div class="navbar-nav ">
           <% if main_user_signed_in? %>
