@@ -58,6 +58,7 @@ group :development, :test do
   gem 'rubocop-rails', require: false
   gem 'rubocop-airbnb'
   gem 'capybara'
+  gem 'launchy'
   gem 'letter_opener_web'
 end
 
