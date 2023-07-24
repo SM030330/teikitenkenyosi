@@ -14,8 +14,8 @@ Rails.application.configure do
 
   # Full error reports are disabled and caching is turned on.
   # test稼働のためtrueに変更
-  # config.consider_all_requests_local       = false
-  config.consider_all_requests_local       = true
+  config.consider_all_requests_local       = false
+  # config.consider_all_requests_local       = true
   config.action_controller.perform_caching = true
 
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
@@ -31,7 +31,7 @@ Rails.application.configure do
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   # test稼働のためtrueに変更
-  config.assets.compile = true
+  config.assets.compile = false
   # config.assets.compile = true
   
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
