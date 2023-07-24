@@ -4,6 +4,7 @@ RSpec.describe "Main::Users", type: :system do
   before do
     driven_by(:rack_test)
   end
+  let(:user) { create(:user) }
 
   describe "GET /main/user/sign_up" do
     scenario "sign_up処理が正しく行えること" do
@@ -18,8 +19,8 @@ RSpec.describe "Main::Users", type: :system do
     end
   end
 
-  describe "GET /main/user/sign_in" do
-    let!(:user) { create(:user) }
+  describe "GET /main/user/sign_in, sign_out" do
+    before { user }
 
     scenario "sign_in, sign_out処理が正しく行えること" do
       visit new_main_user_session_path
@@ -35,6 +36,35 @@ RSpec.describe "Main::Users", type: :system do
       end
       expect(current_path).to eq root_path
       expect(page).to have_content 'あなたの予定整理をサポートします'
+    end
+  end
+
+  describe "GET /main/user/edit" do
+    before { sign_in user }
+
+    scenario "user情報の編集が正しく行えること" do
+      visit edit_main_user_registration_path
+      fill_in 'main_user[name]', with: 'edited_user_name'
+      fill_in 'main_user[email]', with: 'edited@example.com' 
+      fill_in 'main_user[notice_email]', with: 'edited_notice@example.com' 
+      fill_in 'main_user[current_password]', with: "132456asdf"
+      click_button 'PassWordの変更'
+      fill_in 'main_user[password]', with: 'edited_password'
+      fill_in 'main_user[password_confirmation]', with: 'edited_password'
+
+      click_button '変更を完了する'
+      expect(current_path).to eq root_path
+      expect(User.find_by(id: user.id).name).to eq 'edited_user_name'
+      expect(User.find_by(id: user.id).email).to eq 'edited@example.com'
+      expect(User.find_by(id: user.id).notice_email).to eq 'edited_notice@example.com'
+      # passwordの確認
+      sign_out user
+      visit new_main_user_session_path
+      fill_in 'main_user[email]',    with: 'edited@example.com'
+      fill_in 'main_user[password]', with: 'edited_password'
+      click_button 'ログイン'
+      expect(current_path).to eq root_path
+      expect(page).to have_content "直近の予定"
     end
   end
 end
