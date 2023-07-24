@@ -15,10 +15,10 @@ services:
       - app
 
   app:
-    # build:
-    #   context: .
-    #   dockerfile: Dockerfile.deploy
-    image: sm030330/tenkenchecker-app:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.deploy
+    # image: sm030330/tenkenchecker-app:latest
     env_file:
       - .env
     volumes:
