@@ -13,6 +13,11 @@ Rails.application.routes.draw do
     devise_for :users, controllers: { registrations: "main/users/registrations",
                                       sessions: "main/users/sessions",
                                       passwords: "main/users/passwords"}
+
+    devise_scope :main_user do
+      post "/guest_sign_in" => "users/sessions#guest_sign_in"
+    end
+
     namespace :users do
       resources :users, :only => [:show]
     end

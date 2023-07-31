@@ -3,6 +3,7 @@
 class Main::Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
+  before_action :ensure_normal_user, only: [:destroy, :update]
 
   # GET /resource/sign_up
   def new
@@ -27,6 +28,12 @@ class Main::Users::RegistrationsController < Devise::RegistrationsController
   # DELETE /resource
   def destroy
     super
+  end
+
+  def ensure_normal_user
+    if resource.email == 'guest@example.com'
+      redirect_to root_path, alert: '本ユーザーは閲覧用の為ユーザー情報の変更はできません。'
+    end
   end
 
   # GET /resource/cancel

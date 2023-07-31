@@ -16,7 +16,7 @@ services:
       - '33406:3306'
     volumes:
       - mysql_data:/var/lib/mysql
-  app:
+  app-dev:
     build:
       context: .
       dockerfile: Dockerfile.dev
@@ -39,5 +39,6 @@ services:
     tty: true
     stdin_open: true
 
-    command: bundle exec rails server -b 0.0.0.0
+    # command: bundle exec rails server -b 0.0.0.0
+    command: bash
 
