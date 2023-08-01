@@ -16,10 +16,7 @@ Rails.application.routes.draw do
 
     devise_scope :main_user do
       post "/guest_sign_in" => "users/sessions#guest_sign_in"
-    end
-
-    namespace :users do
-      resources :users, :only => [:show]
+      get  "/user/:id" => "users/registrations#show", as: :user_registration_show
     end
 
     if Rails.env.development?
