@@ -5,8 +5,6 @@ bundle config set --local path 'vendor/bundle'
 
 bundle install -j3
 
-
-
 ruby -v
 
 node -v

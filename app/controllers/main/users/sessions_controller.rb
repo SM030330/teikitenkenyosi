@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Main::Users::SessionsController < Devise::SessionsController
-  before_action :authenticate_main_user!
+  before_action :authenticate_main_user!, only: [:new, :create, :destroy]
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -14,6 +14,12 @@ class Main::Users::SessionsController < Devise::SessionsController
     super
   end
 
+  def guest_sign_in
+    user = User.guest
+    sign_in user
+    redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
+  end
+  
   # DELETE /resource/sign_out
   def destroy
     super
