@@ -219,3 +219,7 @@ fabric.properties
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+# google calendar client key
+client_secret_670484251231-rgkd0stt37l2oe9ds80oj4ajb0imtpsr.apps.googleusercontent.com.json
+/credentials.json

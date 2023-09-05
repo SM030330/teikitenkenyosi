@@ -17,6 +17,7 @@ class Main::Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def show
+    @google_auth = DbTokenStore.new.load(current_main_user.id)
   end
 
   # GET /resource/edit

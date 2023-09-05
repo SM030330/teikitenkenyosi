@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_19_221952) do
+ActiveRecord::Schema.define(version: 2023_08_20_022051) do
 
   create_table "categories", charset: "utf8mb3", force: :cascade do |t|
     t.string "name", null: false
@@ -27,6 +27,15 @@ ActiveRecord::Schema.define(version: 2023_04_19_221952) do
     t.bigint "inspection_id", null: false
     t.index ["category_id"], name: "index_categories_to_inspections_on_category_id"
     t.index ["inspection_id"], name: "index_categories_to_inspections_on_inspection_id"
+  end
+
+  create_table "google_oauth_tokens", charset: "utf8mb3", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "access_token", null: false
+    t.string "refresh_token", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_google_oauth_tokens_on_user_id"
   end
 
   create_table "inspections", charset: "utf8mb3", force: :cascade do |t|
@@ -71,6 +80,7 @@ ActiveRecord::Schema.define(version: 2023_04_19_221952) do
   add_foreign_key "categories", "users"
   add_foreign_key "categories_to_inspections", "categories"
   add_foreign_key "categories_to_inspections", "inspections"
+  add_foreign_key "google_oauth_tokens", "users"
   add_foreign_key "inspections", "users"
   add_foreign_key "items", "inspections"
   add_foreign_key "items", "users"

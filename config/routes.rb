@@ -9,6 +9,13 @@ Rails.application.routes.draw do
     get 'home/confirm', to: 'home#confirm', ad: :home_confirm
     resources :inspections, only: [:index, :create, :show, :edit, :update, :destroy]
     resources :items, only: [:edit, :update]
+    resources :google_oauth, only: [] do
+      collection do
+        get :authorize
+        get :reauthorize
+        get :callback
+      end
+    end
 
     devise_for :users, controllers: { registrations: "main/users/registrations",
                                       sessions: "main/users/sessions",

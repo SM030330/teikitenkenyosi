@@ -173,6 +173,11 @@ img.new_check_ditails {
   color: rgba(0,0,0,.55) !important;
 }
 
+.inspection-checkbox {
+  width: 20px;
+  height: 20px;
+}
+
 @media (min-width: 992px) {
   .navbar-nav {
     align-items: center;

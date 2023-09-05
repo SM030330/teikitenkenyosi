@@ -9,9 +9,22 @@ class Main::InspectionsController < ApplicationController
 
   def create
     @new_inspection = current_main_user.inspections.build(strong_param_create_inspection)
-    respond_to do |format|
-      if @new_inspection.valid?
+
+    if @new_inspection.valid?
+      if strong_param_create_google_api_alignment[:google_api_alignment] == "1"
+        google_cal_object = GoogleApiCal.new(current_main_user.id, request)
+        redirect_to google_cal_object.redirect_url if google_cal_object.redirect_url.present?
+        @new_inspection.items.each do |item|
+          google_cal_object.addEvent(item.name,
+                                      @new_inspection.name,
+                                      item.do_day)  
+        end
         @new_inspection.save
+      end
+    end
+
+    respond_to do |format|
+      if @new_inspection.valid?        
         format.js
       else
         format.js { render :error }
@@ -48,6 +61,10 @@ class Main::InspectionsController < ApplicationController
   private
   def strong_param_create_inspection
     params.require(:inspection).permit(:name, :comment, items_attributes: [:name, :do_day, :notice_day, :user_id ])
+  end
+
+  def strong_param_create_google_api_alignment
+    params.require(:inspection).permit(:google_api_alignment)
   end
 
   def strong_param_update_inspection
