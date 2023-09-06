@@ -1,8 +1,8 @@
-class GoogleApiCal
+class GoogleApiCalendar
   require 'googleauth'
   require 'googleauth/web_user_authorizer'
   require 'google/apis/calendar_v3'
-  attr_accessor :redirect_url
+  attr_accessor :credentials, :redirect_url
   
   def initialize(user_id, request)
     @user_id = user_id
@@ -14,7 +14,7 @@ class GoogleApiCal
     set_authorizer
     @credentials = @authorizer.get_credentials(@user_id, @request)
     if @credentials.nil?      
-      @redirect_url = @authorizer.get_authorization_url(login_hint: @user_id, request: @request)    else
+      @redirect_url = @authorizer.get_authorization_url(login_hint: @user_id, request: @request)
     end
   end
 
@@ -61,7 +61,7 @@ class GoogleApiCal
     token_store = DbTokenStore.new
     # token_store = Google::Auth::Stores::RedisTokenStore.new(redis: Redis.new)
     # callback アクションの URL
-    callback_url = 'http://localhost:3001/main/google_oauth/callback'
+    callback_url = ENV["GOOGLE_CALLBACK_URL"]
 
     @authorizer = Google::Auth::WebUserAuthorizer.new(client_id, scopes, token_store, callback_url)
   end
@@ -69,7 +69,7 @@ class GoogleApiCal
   def set_calendar_sarvice
     @calendar = Google::Apis::CalendarV3::CalendarService.new
     # @calendar.client_options.application_name = ENV.fetch['GOOGLE_CALENDAR_APPLICATION_NAME']
-    @calendar.client_options.application_name = 'GoogleCalendarAPI_Client'
+    @calendar.client_options.application_name = ENV["GOOGLE_CALENDAR_APPLICATION_NAME"]
     @calendar.authorization = @credentials
   end
 end

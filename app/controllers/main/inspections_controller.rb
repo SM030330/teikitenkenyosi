@@ -12,7 +12,7 @@ class Main::InspectionsController < ApplicationController
 
     if @new_inspection.valid?
       if strong_param_create_google_api_alignment[:google_api_alignment] == "1"
-        google_cal_object = GoogleApiCal.new(current_main_user.id, request)
+        google_cal_object = GoogleApiCalendar.new(current_main_user.id, request)
         redirect_to google_cal_object.redirect_url if google_cal_object.redirect_url.present?
         @new_inspection.items.each do |item|
           google_cal_object.addEvent(item.name,
