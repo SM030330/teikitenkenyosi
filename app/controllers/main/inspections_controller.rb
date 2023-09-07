@@ -10,22 +10,27 @@ class Main::InspectionsController < ApplicationController
   def create
     @new_inspection = current_main_user.inspections.build(strong_param_create_inspection)
 
-    if @new_inspection.valid?
-      if strong_param_create_google_api_alignment[:google_api_alignment] == "1"
-        google_cal_object = GoogleApiCalendar.new(current_main_user.id, request)
-        redirect_to google_cal_object.redirect_url if google_cal_object.redirect_url.present?
-        @new_inspection.items.each do |item|
-          google_cal_object.addEvent(item.name,
-                                      @new_inspection.name,
-                                      item.do_day)  
-        end
-        @new_inspection.save
-      end
-    end
-
     respond_to do |format|
-      if @new_inspection.valid?        
-        format.js
+
+      if @new_inspection.valid?
+        if strong_param_create_google_api_alignment[:google_api_alignment] == "1"
+          if DbTokenStore.new.load(current_main_user).nil?
+            @new_inspection.errors_add_api_auth 
+            format.js { render :error }
+          else
+            google_cal_object = GoogleApiCalendar.new(current_main_user.id, request)
+            @new_inspection.items.each do |item|
+              google_cal_object.addEvent(item.name,
+                                          @new_inspection.name,
+                                          item.do_day)  
+            end
+            @new_inspection.save
+            format.js
+          end
+        else
+          @new_inspection.save
+          format.js
+        end
       else
         format.js { render :error }
       end
