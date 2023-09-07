@@ -7,6 +7,7 @@
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "5.4.3",
     "cocoon": "github:nathanvda/cocoon#c24ba53",
+    "http-server": "^14.1.1",
     "jquery": "^3.6.1",
     "vue-loader": "15.9.2",
     "webpack": "^4.46.0",

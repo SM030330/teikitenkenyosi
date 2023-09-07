@@ -23,13 +23,19 @@
             <%= inspection_form.fields_for :items do |item_form| %>          
               <%= render "main/home/item_fields", f: item_form %>
             <% end %>
-            <div class="d-flex justify-content-end">
+            <div class="d-flex justify-content-end container">
               <%= link_to_add_association 'add task', inspection_form, :items, partial: 'main/home/item_fields', class: 'btn btn-outline-primary btn-sm float-end'%>
             </div>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <%= inspection_form.submit "create", data: { confirm: "保存してもよろしいですか？", disable_with: "保存中" }, class: "btn btn-primary" %>
+          <div class="modal-footer container pt-5">
+            <div class="d-flex align-items-center pb-3 pe-2">
+              <lavel class="pe-3">googleアカウントと連携する</lavel>
+              <%= inspection_form.check_box :google_api_alignment , class: "inspection-checkbox"%>
+            </div>
+            <div class="ms-2">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <%= inspection_form.submit "create", data: { confirm: "保存してもよろしいですか？", disable_with: "保存中" }, class: "btn btn-primary ms-2" %>
+            </div>
           </div>
         </div>
       <% end %>

@@ -41,6 +41,9 @@ gem 'rails-i18n'
 gem 'dotenv-rails'
 gem 'whenever', require: false
 gem 'simple_calendar', "~> 2.0"
+gem 'google-api-client', '~> 0.53.0'
+gem 'google-apis-calendar_v3', '~> 0.5.0'
+gem 'googleauth', '~> 1.7', require: 'googleauth/stores/file_token_store'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
