@@ -85,7 +85,9 @@ class Main::InspectionsController < ApplicationController
   end
 
   def lood_form_items
-    @items = Item.includes(:inspection).where(user_id: current_main_user.id).order( do_day: :asc)
+    @items = Item.includes(:inspection).where(user_id: current_main_user.id, 
+                                              inspection_id: params[:id])
+                                       .order( do_day: :asc)
     @form = Form::ItemCollection.new(items: @items)
   end
 

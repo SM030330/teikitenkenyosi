@@ -30,3 +30,6 @@ AWS RDS
 AWS EC2  
 AWS EC2(ALB)  
 AWS Route 53  
+
+
+https://tenkenchecker.net/main/google_oauth/callback?state=%7B%22session_id%22:%22OYfedriqOCMknc39Hn9CSw%3D%3D%22,%22current_uri%22:%22https://www.tenkenchecker.net/main/google_oauth/authorize%22%7D&code=4/0Adeu5BX_pigB2osm-_EgY7zLPXfsC_5v5BmtKGfuFwp9NWNOnMbVJH_dqmQ-tzU3ca-o1Q&scope=https://www.googleapis.com/auth/drive.readonly%20https://www.googleapis.com/auth/calendar.readonly%20https://www.googleapis.com/auth/calendar
