@@ -17,7 +17,9 @@ class Main::Users::SessionsController < Devise::SessionsController
   def guest_sign_in
     user = User.guest
     sign_in user
-    redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
+    flash[:notice] = 'ゲストユーザーとしてログインしました。'
+    flash[:notice2] = 'ゲストモードは共用の閲覧ページの為、個人情報の入力はお控えください'
+    redirect_to root_path
   end
   
   # DELETE /resource/sign_out
