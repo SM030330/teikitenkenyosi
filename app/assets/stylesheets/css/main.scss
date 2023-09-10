@@ -229,7 +229,10 @@ img.new_check_ditails {
       height: 5rem;
     }
   }
-  .calendar_item{
+  .calendar_item_undoing{
+    display: none;
+  }
+  .calendar_item_doing{
     display: none;
   }
   .calendar_item_sm{
