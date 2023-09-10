@@ -35,7 +35,7 @@
             <div class="mb-1 <%= item_doing_return_css_class(user_item) %>">
               <label>点検名：</label><span><%= link_to main_inspection_path(user_item.inspection.id) do %><%= user_item.inspection.name %><% end %></span><br>
               <label>項目：</label><sapn><%= user_item.name %></sapn>
-              <label>作業状況：</label><sapn><%= item_doing?(user_item) %></sapn>
+              <label>作業状況：</label><sapn><%= item_doing_return_string(user_item) %></sapn>
             </div>
         <% end %>
         <div class="calendar_item_sm">

@@ -1,10 +1,9 @@
 class Main::InspectionsController < ApplicationController
   before_action :authenticate_main_user!
-  before_action :lood_inspection_items, only: [:show, :edit, :update, :edit, :edit_destroy]
+  before_action :lood_inspection_items, only: [ :edit, :update, :edit, :edit_destroy]
+  before_action :lood_form_items, only: [:index, :show]
 
   def index
-    @items = Item.includes(:inspection).where(user_id: current_main_user.id).order( do_day: :asc)
-    @form = Form::ItemCollection.new(items: @items)
   end
 
   def create
@@ -38,6 +37,7 @@ class Main::InspectionsController < ApplicationController
   end
 
   def show
+    @inspection = @items[0].inspection
   end
 
   def edit
@@ -82,6 +82,11 @@ class Main::InspectionsController < ApplicationController
 
   def lood_inspection_items
     @inspection = current_main_user.inspections.includes(:items).find(params[:id])
+  end
+
+  def lood_form_items
+    @items = Item.includes(:inspection).where(user_id: current_main_user.id).order( do_day: :asc)
+    @form = Form::ItemCollection.new(items: @items)
   end
 
   def destroy_inspection_or_items
