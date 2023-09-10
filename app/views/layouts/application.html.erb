@@ -12,7 +12,9 @@
 
   <body class="d-flex flex-column h-100">
     <%= render "layouts/header.html.erb" %>
-    <%= yield %>
+    <div class="main_container">
+      <%= yield %>
+    </div>
     <%= render "layouts/footer.html.erb" %>
     <% if Rails.env.development? %>
       <div class="card w-50">
