@@ -44,6 +44,10 @@ a {
   text-decoration: none !important;
 }
 
+.bg-aliceblue {
+  background-color: aliceblue;
+}
+
 // form-signin
 .card-container.card {
   max-width: 350px;
@@ -60,7 +64,7 @@ a {
 }
 
 .card {
-  background-color: #F7F7F7;
+  background-color:aliceblue;
   /* just in case there no content*/
   padding: 20px 25px 30px;
   margin: 0 auto 25px;
@@ -139,6 +143,10 @@ a {
   display: none;
 }
 
+.navbar {
+  background: linear-gradient(to bottom,#F7F7F7 0%, lightblue 100%);
+}
+
 .navbar-brand {
   height: 4rem;
 }
@@ -149,16 +157,20 @@ a {
 
 img.ditails {
   width: 80%;
-  border: 1px solid  rgb(104, 145, 162);
+  border: 3px solid  lightblue;
   border-radius: 3%;
   margin: 5% 0; 
 }
 
 img.new_check_ditails {
   width: 40%;
-  border: 1px solid  rgb(104, 145, 162);
+  border: 3px solid  lightblue;
   border-radius: 3%;
   margin: 5% 0; 
+}
+
+.footer {
+  background: linear-gradient(to top,#F7F7F7 0%, lightblue 100%);
 }
 
 .footer-cont {
@@ -177,6 +189,14 @@ img.new_check_ditails {
 
 .confirm-lead {
   font-size: 20px;
+}
+
+.main_container {
+  background: radial-gradient(
+    circle farthest-side at center,
+    lightblue 5%,
+    lightblue 20%,
+    lightblue 100%);
 }
 
 @media (min-width: 992px) {

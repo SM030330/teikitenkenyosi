@@ -2,7 +2,7 @@
     <div>
       <h2 class="mt-2">直近作業前の予定</h2>
       <% if @coming_items.present? %>
-        <table class="table coming-soon mb-3">
+        <table class="table coming-soon mb-3 bg-aliceblue">
           <thead>
             <tr>
               <th scope="col">作業日</th>
@@ -28,19 +28,21 @@
         <h3 class="text-center mt-5"> 直近の予定はありません </h3>
       <% end %>
     </div>
-    <%= month_calendar(attribute: :do_day, events: @user_items) do |date, user_items| %>
-      <div class="calendar-items">
-        <%= date.day %>
-        <% user_items.each do |user_item| %>
-            <div class="mb-1 <%= item_doing_return_css_class(user_item) %>">
-              <label>点検名：</label><span><%= link_to main_inspection_path(user_item.inspection.id) do %><%= user_item.inspection.name %><% end %></span><br>
-              <label>項目：</label><sapn><%= user_item.name %></sapn>
-              <label>作業状況：</label><sapn><%= item_doing_return_string(user_item) %></sapn>
-            </div>
-        <% end %>
-        <div class="calendar_item_sm">
-          <p><%= "#{user_items.size}件" if user_items.present? %></p>
+    <div class="bg-aliceblue">
+      <%= month_calendar(attribute: :do_day, events: @user_items) do |date, user_items| %>
+        <div class="calendar-items">
+          <%= date.day %>
+          <% user_items.each do |user_item| %>
+              <div class="mb-1 <%= item_doing_return_css_class(user_item) %>">
+                <label>点検名：</label><span><%= link_to main_inspection_path(user_item.inspection.id) do %><%= user_item.inspection.name %><% end %></span><br>
+                <label>項目：</label><sapn><%= user_item.name %></sapn>
+                <label>作業状況：</label><sapn><%= item_doing_return_string(user_item) %></sapn>
+              </div>
+          <% end %>
+          <div class="calendar_item_sm">
+            <p><%= "#{user_items.size}件" if user_items.present? %></p>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
