@@ -1,9 +1,9 @@
 class Inspection < ApplicationRecord
   belongs_to :user
 
-  has_many   :items
-  has_many   :categories_to_inspections
-  has_many   :categories, through: :categories_to_inspections
+  has_many   :items, dependent: :destroy
+  has_many   :categories_to_inspections, dependent: :destroy
+  has_many   :categories, through: :categories_to_inspections, dependent: :destroy
 
   validates :name, presence: true
 

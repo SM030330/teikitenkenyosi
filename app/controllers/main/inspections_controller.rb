@@ -56,10 +56,6 @@ class Main::InspectionsController < ApplicationController
 
   def destroy
     destroy_inspection_or_items()
-    lood_inspection_items()
-    if @inspection.items.blank?
-      Inspection.destroy(@inspection.id)
-    end
     redirect_to main_inspections_path, notice: "点検項目を削除しました"
   end
 
@@ -76,8 +72,8 @@ class Main::InspectionsController < ApplicationController
     params.require(:inspection).permit(:name, :comment, items_attributes: [:id, :name, :do_day, :notice_day, :user_id, :_destroy])
   end
 
-  def strong_param_destroy_inspection_is_delete
-    params.require(:inspection).permit(:is_delete)
+  def strong_param_destroy_inspection
+    params.require(:inspection).permit(:id, :is_delete)
   end
 
   def strong_param_destroy_items
@@ -89,11 +85,11 @@ class Main::InspectionsController < ApplicationController
   end
 
   def destroy_inspection_or_items
-    if strong_param_destroy_inspection_is_delete == 1.to_s
-      Inspection.destroy(params[:id])
+    if strong_param_destroy_inspection[:is_delete] == 1.to_s
+      Inspection.destroy(strong_param_destroy_inspection[:id])
     else
-      @items = Form::ItemCollection.new(strong_param_destroy_items)
-      @items.destroy
+      Form::ItemCollection.new(strong_param_destroy_items).destroy     
+      Inspection.destroy(strong_param_destroy_inspection[:id]) if Item.where(inspection_id: strong_param_destroy_inspection[:id]).blank?
     end
   end
 end
