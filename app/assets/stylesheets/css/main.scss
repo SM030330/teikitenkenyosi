@@ -124,9 +124,14 @@ a {
   }
 }
 
-.calendar_item{
+.calendar_item_undoing{
   font-size: 10px;
   background-color: lightblue;
+}
+
+.calendar_item_doing{
+  font-size: 10px;
+  background-color:lightsalmon;
 }
 
 .calendar_item_sm{

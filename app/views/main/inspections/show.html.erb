@@ -1,37 +1,44 @@
-<div class="container">
-  <table class="table mt-5">
-    <tbody class="fs-3">
-      <tr>
-        <th scope="row">点検名</th>
-        <td><%= @inspection.name %></td>
-      </tr>
-      <tr>
-        <th scope="row">備考</th>
-        <td><%= @inspection.comment %></td>
-      </tr>
-      <tr>
-    </tbody>
-  </table>
-  <% @inspection.items.each do |item| %>
-    <div class="card">
-      <div class="card-header">
-        <h6>項目名：<%= item.name %></h6>
-      </div>
-      <table class="table mt-2">
-        <tbody>
-          <tr>
-            <th scope="row">実施日   :</th>
-            <td><%= item.do_day %></td>
-          </tr>
-          <tr>
-            <th scope="row">通知日   :</th>
-            <td><%= item.notice_day %></td>
-          </tr>
-          <tr>
-        </tbody>
-      </table>
+<div class="container d-flex align-items-center flex-column">
+  <div class="w-50 mt-5">
+    <div class="pb-4">
+      <h3 class="pb-2">点検名</h3>
+      <p class="text-center fs-3"><%= @inspection.name %></p>
     </div>
-  <% end %>
-  <%= link_to "設定内容を変更する", edit_main_inspection_path, class: 'btn btn-outline-primary float-end ms-1 mt-1'%>
-  <%= link_to "点検を削除する", main_inspection_edit_destroy_path(@inspection.id), class: 'btn btn-outline-danger float-end mt-1'%>
+    <div class="pb-4">
+      <h3 class="pb-2">備考</h3>
+      <p class="px-5 text-center fs-4"><%= @inspection.comment %></p>
+    </div>
+    <%= form_for(@form, url: main_item_change_doing_url, method: :post) do |form_items| %>
+      <%= form_items.fields_for :items do |item_f| %>
+      <div class="card">
+          <div>
+            <%= item_f.check_box :doing, class: "form-check-input float-end", id: "formCheckDefault", value: @items[item_f.index].doing %>
+          </div>
+          <div class="card-header">
+            <p class="fs-4">項目名：<%= @items[item_f.index].name %></p>
+          </div>
+          <table class="table mt-2">
+            <tbody>
+              <tr>
+                <th scope="row">実施日   :</th>
+                <td><%= @items[item_f.index].do_day %></td>
+              </tr>
+              <tr>
+                <th scope="row">通知日   :</th>
+                <td><%= @items[item_f.index].notice_day %></td>
+              </tr>
+              <tr>
+                <th scope="row">作業状態   :</th>
+                <td class=<%= @items[item_f.index].doing ? "text-danger" : "text-primary" %>><%= item_doing_return_string(@items[item_f.index]) %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      <% end %>
+      <p class="text-center">チェックボックスのチェックを入れた項目は作業状態を変更できます．</p>
+      <%= form_items.submit "作業状態を変更する" , class: 'btn btn-outline-primary float-end ms-1 mt-1'%>
+    <% end %>
+    <%= link_to "設定内容を変更する", edit_main_inspection_path, class: 'btn btn-outline-primary float-end ms-1 mt-1'%>
+    <%= link_to "点検を削除する", main_inspection_edit_destroy_path(@inspection.id), class: 'btn btn-outline-danger float-end mt-1'%>
+  </div>
 </div>

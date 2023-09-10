@@ -24,14 +24,17 @@
               <td>
                 <div class="form-check">
                   <%= item_f.check_box :doing, class: "form-check-input", id: "formCheckDefault", value: @items[item_f.index].doing %>
-                  <label class="form-check-label" for="formCheckDefault"><%= @items[item_f.index].doing %></label>
+                  <label class="form-check-label <%= @items[item_f.index].doing ? "text-danger" : "text-primary" %>" for="formCheckDefault">
+                    <%= item_doing_return_string(@items[item_f.index]) %>
+                  </label>
                 </div>
               </td>      
             </tr>
           <% end %>
         </tbody>
       </table>
-      <%= form_items.submit "作業状態を変更する" , class: 'btn btn-outline-primary float-end'%>
+      <p class="text-center">チェックボックスのチェックを入れた項目は作業状態を変更できます．</p>
+      <%= form_items.submit "作業状態を変更する" , class: 'btn btn-outline-primary float-end ms-1 mt-1'%>
     <% else %>
       <h3 class="text-center mt-5"> 予定している通知はありません </h3>
     <% end %>
