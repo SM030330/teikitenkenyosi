@@ -33,15 +33,15 @@
         <div class="calendar-items">
           <%= date.day %>
           <% user_items.each do |user_item| %>
-              <div class="mb-1 <%= item_doing_return_css_class(user_item) %>">
+              <div class="mb-1 calendar_item_l <%= item_doing_return_css_class(user_item) %>">
                 <label>点検名：</label><span><%= link_to main_inspection_path(user_item.inspection.id) do %><%= user_item.inspection.name %><% end %></span><br>
                 <label>項目：</label><sapn><%= user_item.name %></sapn>
                 <label>作業状況：</label><sapn><%= item_doing_return_string(user_item) %></sapn>
               </div>
+              <div class="mb-1 calendar_item_sm <%= item_doing_return_css_class(user_item) %>">
+                <span><%= link_to main_inspection_path(user_item.inspection.id) do %><%= user_item.inspection.name %><% end %></span><br>
+              </div>
           <% end %>
-          <div class="calendar_item_sm">
-            <p><%= "#{user_items.size}件" if user_items.present? %></p>
-          </div>
         </div>
       <% end %>
     </div>
