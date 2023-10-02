@@ -10,7 +10,7 @@
 予定は点検項目ごとに作業状況を管理することができます．
 ![](doc/images/screanshot.png)
 
-##googleアカウントとの連携
+## googleアカウントとの連携
 googleアカウントと連携することで、アカウントに紐づいたcalendarにイベントを登録することができます．
 ![gif](doc/gif/googlecalendar登録手順.gif)
 
