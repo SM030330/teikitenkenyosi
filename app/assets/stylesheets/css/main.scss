@@ -4,6 +4,9 @@
   margin: 0;
   padding: 0;
 }
+html {
+  background-color: #F7F7F7;
+}
 
 ul {
   margin: 0;
@@ -127,9 +130,6 @@ a {
     height: 11rem;
   }
 }
-.calendar_item_sm{
-  font-size: 10px;
-}
 
 .calendar_item_undoing{
   background-color: lightblue;
@@ -137,15 +137,6 @@ a {
 
 .calendar_item_doing{
   background-color:lightsalmon;
-}
-
-.calendar_item_sm{
-  display: none;
-  span {
-    font-size: 1px;
-    letter-spacing: -0.07em;
-    display: block;
-  }
 }
 
 .navbar {
@@ -208,6 +199,15 @@ img.new_check_ditails {
   width: 50%;
 }
 
+.border-dashed{
+  border-top:2px dashed;
+}
+
+.nested-fields:first-of-type{
+  border: none;
+}
+
+// PC画面での設定
 @media (min-width: 992px) {
   .navbar-nav {
     align-items: center;
@@ -221,8 +221,11 @@ img.new_check_ditails {
   .display-noncolapse {
     display: flex !important;
   }
+  .calendar_item_sm{
+    display: none;
+  }
 }
-
+// タブレット画面での設定
 @media (max-width: 991px) {
   .navbar-nav {
     align-items: baseline;
@@ -246,6 +249,13 @@ img.new_check_ditails {
   }
   .calendar_item_sm{
     display: block;
+    span {
+      font-size: 1rem;
+      letter-spacing: -0.07em;
+      a {
+        padding-left: 0.2rem;
+      }
+    }
   }
   .navbar-brand {
     height: 2.5rem;
@@ -257,7 +267,7 @@ img.new_check_ditails {
     width: 100% !important;
   }
 }
-
+// スマホ画面での設定
 @media (max-width: 500px) {
   table {
     font-size: 0.8rem;
