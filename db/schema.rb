@@ -10,19 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_20_022051) do
-
+ActiveRecord::Schema[7.2].define(version: 2025_01_12_164838) do
   create_table "categories", charset: "utf8mb3", force: :cascade do |t|
     t.string "name", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_categories_on_user_id"
   end
 
   create_table "categories_to_inspections", charset: "utf8mb3", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "category_id", null: false
     t.bigint "inspection_id", null: false
     t.index ["category_id"], name: "index_categories_to_inspections_on_category_id"
@@ -33,8 +32,8 @@ ActiveRecord::Schema.define(version: 2023_08_20_022051) do
     t.bigint "user_id", null: false
     t.string "access_token", null: false
     t.string "refresh_token", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_google_oauth_tokens_on_user_id"
   end
 
@@ -42,8 +41,8 @@ ActiveRecord::Schema.define(version: 2023_08_20_022051) do
     t.string "name", null: false
     t.text "comment"
     t.boolean "doing", default: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.boolean "is_delete", default: false
     t.index ["user_id"], name: "index_inspections_on_user_id"
@@ -54,8 +53,8 @@ ActiveRecord::Schema.define(version: 2023_08_20_022051) do
     t.date "do_day", null: false
     t.date "notice_day", null: false
     t.boolean "doing", default: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "inspection_id", null: false
     t.bigint "user_id", null: false
     t.boolean "is_delete", default: false
@@ -67,12 +66,12 @@ ActiveRecord::Schema.define(version: 2023_08_20_022051) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
+    t.datetime "reset_password_sent_at", precision: nil
+    t.datetime "remember_created_at", precision: nil
     t.string "name", default: "ゲストユーザー", null: false
     t.string "notice_email", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

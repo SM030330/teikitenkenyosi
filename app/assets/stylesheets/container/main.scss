@@ -93,9 +93,10 @@ a {
 }
 
 .btn-new {
-  /*background-color: #4d90fe; */
-  background-color: rgb(104, 145, 162);
-  /* background-color: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));*/
+  // background-color: #4d90fe; */
+  // background-color: rgb(104, 145, 162);
+  // background-color: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));*/
+  background-color: white;
   padding: 0px;
   font-weight: 700;
   font-size: 14px;
@@ -103,7 +104,7 @@ a {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border-radius: 3px;
-  border: none;
+  border: 1px solid #bbb;
   -o-transition: all 0.218s;
   -moz-transition: all 0.218s;
   -webkit-transition: all 0.218s;
@@ -126,7 +127,7 @@ a {
 
 // home/index
 .simple-calendar {
-  tbody tr { 
+  tbody tr {
     height: 11rem;
   }
 }
@@ -155,14 +156,14 @@ img.ditails {
   width: 80%;
   border: 3px solid  lightblue;
   border-radius: 3%;
-  margin: 5% 0; 
+  margin: 5% 0;
 }
 
 img.new_check_ditails {
   width: 40%;
   border: 3px solid  lightblue;
   border-radius: 3%;
-  margin: 5% 0; 
+  margin: 5% 0;
 }
 
 .footer {
@@ -237,7 +238,7 @@ img.new_check_ditails {
     display: none !important;
   }
   .simple-calendar {
-    tbody tr { 
+    tbody tr {
       height: 5rem;
     }
   }
