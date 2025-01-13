@@ -1,13 +1,13 @@
 <div class="container">
   <h2 class="text-center mt-2">パスワード変更メールを送信する</h2>
   <div class="card card-container">
-    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+    <%= form_with( model: resource, as: resource_name, url: password_path(resource_name), html: { method: :post }, class: "d-flex flex-column") do |f| %>
       <%= render "shared/error_messages", resource: resource %>
       <div class="field">
         <%= f.label :email %><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
       </div>
-      <%= f.submit "メールを送信する", class: "btn  btn-outline-primary btn-block btn-new mt-2"%><br />
+      <%= f.submit "メールを送信する", class: "btn  btn-outline-secondary btn-block btn-new w-50 mt-2"%><br />
       <%= render "shared/links", class: "mt-2"%>
     <% end %>
   </div>
