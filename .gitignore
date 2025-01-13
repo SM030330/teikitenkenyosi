@@ -223,3 +223,8 @@ yarn-debug.log*
 # google calendar client key
 client_secret_670484251231-rgkd0stt37l2oe9ds80oj4ajb0imtpsr.apps.googleusercontent.com.json
 /credentials.json
+
+# master.key
+/config/master.key
+/app/assets/builds/*
+!/app/assets/builds/.keep
