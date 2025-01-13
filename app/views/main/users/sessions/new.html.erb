@@ -1,10 +1,10 @@
 <div class="container">
   <h2 class="text-center mt-2"><%= t('sign_in') %></h2>
   <div class="card card-container">
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= form_with model: resource, as: resource_name, url: session_path(resource_name), class: "d-flex gap-3 flex-column" do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
       <div class="field">
-        <%= f.label :email %><br />        
+        <%= f.label :email %><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
       </div>
       <div class="field">
@@ -14,15 +14,16 @@
         <% end %><br />
         <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
       </div>
-      <%= f.submit t('sign_in'), class: "btn btn-outline-primary btn-block btn-new mt-2"%>
-      <div class="mt-2">
+      <%= f.submit t('sign_in'), class: "btn btn-outline-secondary w-50 btn-new mt-2"%>
+      <div class="mt-2 d-flex flex-column gap-1">
         <% if devise_mapping.rememberable? %>
-          <div id="remember" class="field checkbox">
+          <div id="remember" class="field checkbox cursor-pointer">
             <%= f.check_box :remember_me %>
             <%= f.label :remember_me %>
           </div>
+          <%= link_to t("sign_up"), new_registration_path(resource_name) %>
+          <%= link_to t("forgot_your_password"), new_password_path(resource_name) %>
         <% end %>
-        <%= render "shared/links", class: "mt-2"%>
       </div>
     <% end %>
   </div>

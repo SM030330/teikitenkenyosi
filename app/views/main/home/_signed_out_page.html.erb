@@ -1,12 +1,14 @@
-<div class="container text-center">
+<div class="container d-flex flex-column text-center gap-2">
   <h1 class=" mt-5 mb-5">あなたの予定整理をサポートします</h1>
   <p class="mt-3 lead">点検Checkerでは点検したい機器ごとに点検時期のお知らせをすることができます</p>
-  <%= button_to "無料で新規登録", new_main_user_registration_path, method: :get, class: "btn btn-outline-primary btn-block btn-new my-4" %>
-  <%= button_to 'ゲストログイン(閲覧用)', main_guest_sign_in_path, method: :post, class: "btn btn-outline-primary btn-block btn-new mb-4" %>
+  <div class="d-flex justify-content-center gap-3">
+    <%= button_to "無料で新規登録", new_main_user_registration_path, method: :get, class: "btn btn-outline-secondary btn-block btn-new px-2 py-2" %>
+    <%= button_to 'ゲストログイン(閲覧用)', main_guest_sign_in_path, method: :post, class: "btn btn-outline-secondary btn-block btn-new px-2 py-2" %>
+  </div>
   <div class="card align-items-center">
     <h2 class="mb-3">点検したい項目を登録</h2>
     <p class="my-3 lead">点検項目を登録する時はフォームから簡単に登録できます</p>
-    <p class="my-3 lead">事前にgoogleアカウントを紐づけておけば、googleカレンダーに点検日を登録することもできます</p>   
+    <p class="my-3 lead">事前にgoogleアカウントを紐づけておけば、googleカレンダーに点検日を登録することもできます</p>
     <%= image_tag 'new_check3_screanshot.png', class: 'new_check_ditails' %>
   </div>
   <div class="card align-items-center">
@@ -26,8 +28,8 @@
     <h5 class="mt-4 fw-bold">部屋の掃除</h5>
     <%= image_tag 'kaji_screanshot.png', class: 'ditails' %>
   </div>
-  
-  <h2 class="mt-5">furtur vision</h2> 
+
+  <h2 class="mt-5">furtur vision</h2>
   <div class="d-flex justify-content-center">
     <div class="card">
       <ul class="mt-3 pe-4 text-start">
@@ -37,5 +39,5 @@
       </ul>
     </div>
   </div>
-  
+
 </div>
